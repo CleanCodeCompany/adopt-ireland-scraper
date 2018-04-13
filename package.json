@@ -15,6 +15,9 @@
     "mocha": "^5.0.5"
   },
   "dependencies": {
-    "noodlejs": "0.3.2"
+    "fast-levenshtein": "^2.0.6",
+    "levenshtein-distance": "0.0.2",
+    "noodlejs": "^0.3.2",
+    "osmosis": "^1.1.6"
   }
 }
