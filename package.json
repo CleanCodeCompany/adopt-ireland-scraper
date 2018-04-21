@@ -5,20 +5,22 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "test": "mocha test --recursive"
+    "test": "mocha test --recursive",
+    "lint": "eslint ."
   },
   "author": "Colin Fitzsimons",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "4.19.1",
     "eslint-config-airbnb-base": "12.1.0",
-    "eslint-plugin-import": "2.10.0",
-    "mocha": "^5.0.5"
+    "eslint-plugin-import": "2.11.0",
+    "eslint-plugin-mocha": "^5.0.0",
+    "mocha": "5.0.5"
   },
   "dependencies": {
-    "ajv": "^6.4.0",
-    "fast-levenshtein": "^2.0.6",
+    "ajv": "6.4.0",
+    "fast-levenshtein": "2.0.6",
     "levenshtein-distance": "0.0.2",
-    "noodlejs": "^0.3.2",
-    "osmosis": "^1.1.6"
+    "noodlejs": "0.3.2"
   }
 }

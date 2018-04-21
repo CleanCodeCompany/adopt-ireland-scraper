@@ -5,3 +5,6 @@ const validate = (dogs) => {
    */
 };
 
+module.exports = {
+  validate,
+};
