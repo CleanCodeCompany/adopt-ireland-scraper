@@ -1,0 +1,12 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "entryDate": { "type": "string" },
+      "breed": { "type": "string" },
+      "age": { "type": "string" },
+      "sex": { "type": "string" }
+    }
+  }
+}
