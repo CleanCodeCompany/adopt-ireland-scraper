@@ -1,4 +1,19 @@
 {
-    "extends": "airbnb-base",
-    "parser": "typescript-eslint-parser"
+    "parser": "typescript-eslint-parser",
+    "env": {
+        "es6": true,
+        "node": true,
+        "mocha": true
+    },
+    "settings": {
+        "import/resolver": {
+            "eslint-import-resolver-typescript": true
+        }
+    },
+    "plugins": ["typescript"],
+    "extends": "airbnb/base",
+    "rules": {
+        "import/extensions": "never",
+        "import/prefer-default-export": "off"
+    }
 }
