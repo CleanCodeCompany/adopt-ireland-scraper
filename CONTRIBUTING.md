@@ -85,6 +85,31 @@ A new PR for a scraper will not be accepted unless all tests and lint rules are 
 ### Certainty Scores
 As was described briefly, since our system has to do a bit of deductive reasoning there’s a chance that it will get things wrong occasionally.  Ideally we want to minimize this and we expect new scrapers to have an average certainty of over 75%.  If for whatever reason this isn’t achievable, submit the PR and provide reasoning as to why you think this is not possible for the particular site (there very well may be sites that are too complex to automatically parse data from).  
 
+## Git Strategy
+The general strategy is to branch off `master`, do your work under a feature branch following the naming convention `<your name>/<name-of-target-site>`.  If you’re not adding a new scraper or modifying an existing one then the convention `<your name>/<brief description>` should be fine.  
+
+Once your branch is done and tests / lint rules are passing then submit a PR.  One of the project maintainers will swing by to double check everything and merge it up.  If we have review feedback, we’ll mark as such and do our best to give some suggestions.  
+
+
+The process should look something like
+```shell
+// Fork our repository on github / clone
+
+// Create a new branch locally and check it out
+git checkout -b cfitzsimons/dogs-trust
+
+// ... make my changes
+
+// Save those changes
+git add .
+git commit -m "I wrote a scraper!"
+
+// Push them up to the repo
+git push
+
+```
+
+
 ## FAQ
 ### The data from the scraper can’t be properly parsed, what should I do?
 Ensure your set the certainty variable to below 75% (.75 or lower) and it will not be displayed to a user until it is verified manually.
