@@ -1,2 +1,5 @@
 // index.ts
-console.log('If this prints, development is setup');
+import dogsAid from './scraper/dogsAid/scraper';
+
+dogsAid();
+// console.log('If this prints, development is setup');
