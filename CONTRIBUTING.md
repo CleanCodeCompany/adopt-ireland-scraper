@@ -1,22 +1,3 @@
-# Adopt Ireland Scraper
-## Getting started
-### System dependencies
-You’ll first need to download npm and node.  The method of doing so will depend on your platform but the best starting place is usually [here for npam](https://www.npmjs.com/get-npm) and [here for nodeJS](https://nodejs.org/en/download/).  The project has a dependency on **node v8.10.0** and **npm v6.0.0**.  You can change the installed version of nodeJS using either `n` or `nvm`.  
-
-### Starting the project
-The quickest way to get up and running is to preform the following commands
-
-```shell
-# Pull the project
-git clone https://github.com/CleanCodeCompany/adopt-ireland-scraper.git
-
-# Install depdendencies
-cd adopt-ireland-scraper
-npm install
-```
-
-At this point the project should be up and ready to go.  You can run the entire test suite using `npm test`.  If that all passes you know that the project is setup correctly and ready for your contribution.  
-
 ## Testing
 We use `mocha` as our test runner and follow a fairly simple pattern.  
 
@@ -97,7 +78,7 @@ src/
 ```
 If you are implementing a new parser ideally you would create a subfolder under _scrapers_  with the name of the target site.   The `scraper.js` file should contain all the logic to fetch information from the target site while the `parser.js` file should contain the logic for parsing that data into a more correct format.  
 
-## Contribution Guidelines
+## General Contribution Guidelines
 ### Tests
 A new PR for a scraper will not be accepted unless all tests and lint rules are 100% passing.  Ideally there should be a new test added for both the `scraper.ts` and `parser.ts` files.  The more the merrier.
 
