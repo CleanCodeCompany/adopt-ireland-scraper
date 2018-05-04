@@ -1,68 +1,63 @@
 // scraper.ts
-import testData from '../../../testdata.json';
+import testData from "../../../testdata.json";
 
-enum DataType {
-  Breed,
-  Sex,
-  Age,
-};
+enum LineType {
+  Breed = "Breed",
+  Gender = "Gender",
+  Age = "Age",
+  Unknown = "Unknown",
+}
 
-const isGender = (line: string): boolean => {
-  if (line.startsWith('sex')) {
-    return true;
-  }
-  if (line.startsWith('gender')) {
-    return true;
-  }
-  return false;
-};
+const isGender = (line: string): boolean =>
+  line.startsWith("sex") || line.startsWith("gender");
 
-const getLineType = (line: string) => {
-  const lowercaseLine = line.toLocaleLowerCase();
+const isAge = (line: string): boolean =>
+  line.startsWith("age");
+
+const isBreed = (line: string): boolean =>
+  line.startsWith("breed");
+
+const getLineType = (line: string): LineType => {
+  const lowercaseLine = line.toString().toLocaleLowerCase();
   if (isGender(lowercaseLine)) {
-    return lowercaseLine;
+    return LineType.Gender;
   }
-  return `Couldnt find: + ${line}`;
+  if (isAge(lowercaseLine)) {
+    return LineType.Age;
+  }
+  if (isBreed(lowercaseLine)) {
+    return LineType.Breed;
+  }
+  return LineType.Unknown;
 };
 
-// const clean = (data) => {
-//   const cleanData = {};
-// };
-
-const extract = (dirtyList: Array<any>): any =>
+const extract = (dirtyList: any[]): any =>
   dirtyList
-    .map(({ results }) => results[0].results)
-    .map(data => data.details.map((line: string) => getLineType(line)));
+    .map(({ results }) => results[0].results);
+    // .map((data) => data);
 
-console.log(extract(testData));
-// import noodle from '../../../lib/noodle';
-
-// const baseURL = 'http://dogsaid.ie/adoptable-dogs';
-
-// const query = {
-//   url: baseURL,
-//   type: 'html',
-//   selector: '.masonry_brick_a',
-//   extract: 'href',
-// };
-
-// const getDog = (url: string): object => {
-//   const dogQuery = {
-//     url,
-//     type: 'html',
-//     map: {
-//       picture: {
-//         selector: '.attachment-post-thumbnail.size-post-thumbnail.wp-post-image',
-//         extract: 'src',
-//       },
-//       details: {
-//         selector: '.entry-content > p',
-//         extract: 'text',
-//       },
-//     },
-//   };
-//   return noodle.query(dogQuery);
-// };
+const getLineTypes = (details: any) => {
+  const test = details.map((thingy: string) => {
+    // console.log('Line:', thingy);
+    const lineType = getLineType(thingy);
+    // console.log(lineType);
+    return {
+      line: thingy,
+      lineType,
+    };
+  });
+  return test;
+};
+const scrapedDogs = extract(testData);
+scrapedDogs.forEach((dog: any) => {
+  const dogLines = getLineTypes(dog.details);
+  const dogPic = dog.picture;
+  console.log({
+    details: dogLines.filter((line: any) => line.lineType !== LineType.Unknown),
+    picture: dogPic,
+  });
+});
+// console.log(getLineTypes(allData.map((data: any) => data.details)));
 
 const adpotableDogs = async () => {
   // const allDogs = await noodle.query(query);
